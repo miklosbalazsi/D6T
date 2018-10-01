@@ -1,7 +1,5 @@
-.. D6T wireing images 
+=======
+Wireing
+=======
 
-
-=================
-This is a heading
-=================
-.. image Introduction-to-Arduino-UNO.png
+.. image:: Introduction-to-Arduino-UNO.png
