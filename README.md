@@ -2,4 +2,4 @@
 D6T
 
 Documentation
-https://readthedocs.org/projects/d6t/
+d6t.rtfd.io
