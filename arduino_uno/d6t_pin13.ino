@@ -19,7 +19,7 @@ void setup() {
   Serial.println("Start...Wait 500");
   delay(500);
 
-  pinMode(13, OUTPUT); 
+  pinMode(LED_BUILTIN, OUTPUT); 
 }
 
 void loop() {
@@ -81,10 +81,10 @@ void loop() {
   Serial.println();
 
   if (tdata_16 > ptat_16 ){
-      digitalWrite(13, HIGH);
+      digitalWrite(LED_BUILTIN, HIGH);
     }
   else {
-      digitalWrite(13, LOW);
+      digitalWrite(LED_BUILTIN, LOW);
     }
   
   delay(5000);
