@@ -11,6 +11,7 @@ import serial
 import serial.tools.list_ports
 
 BAUDRATE = 115200
+TIMEOUT = 1
 VID = 0x1a86  # 6790
 PID = 0x7523  # 29987
 VENDOR = "QinHeng Electronics"
@@ -39,11 +40,11 @@ for dev in e18_devices:
     print("Open Serial connection to : {}\n".format(dev.device))
     ser = serial.Serial(dev.device)
     ser.baudrate = BAUDRATE
-    ser.timeout = 1
-    txBytes = "\xfe\x01\x01\xff"
-    print("Tx : {:x}\n".format(txBytes))
+    ser.timeout = TIMEOUT
+    txBytes = b"\xfe\x01\x01\xff"
+    print("Tx : {}\n".format(txBytes))
     ser.write(txBytes)
     rxBytes = ser.read(2)
-    print("TR : {:x}\n".format(rxBytes))
+    print("TR : {}\n".format(rxBytes))
     print("Close Serial connection to : {}\n".format(dev.device))
     ser.close()
