@@ -41,9 +41,9 @@ for dev in e18_devices:
     ser.baudrate = BAUDRATE
     ser.timeout = 1
     txBytes = "\xfe\x01\x01\xff"
-    print("Tx : {}\n".format(trBytes))
+    print("Tx : {}\n".format(txBytes))
     ser.write(txBytes)
-    trBytes = ser.read(2)
-    print("TR : {}\n".format(trBytes))
+    rxBytes = ser.read(2)
+    print("TR : {}\n".format(rxBytes))
     print("Close Serial connection to : {}\n".format(dev.device))
     ser.close()
