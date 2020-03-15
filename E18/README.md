@@ -1,3 +1,4 @@
+test 
 https://readthedocs.org/projects/pyserial/downloads/pdf/latest/  
 https://pyserial.readthedocs.io/en/latest/shortintro.html
 
@@ -12,6 +13,5 @@ miklos@raspberrypi ~ $ python3
 >>> usb1.readline()
 '\xfb\x00'
 >>> 
-
 
 ```
