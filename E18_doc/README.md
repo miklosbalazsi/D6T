@@ -49,5 +49,13 @@ KeyboardInterrupt
 8
 >>> usb1.readline()
 '\xf7\xff'
+
+
+>>> >>> usb1.write('\xfe\x01\x01\xff')
+4
+>>> usb1.readline()
+'\xfb\x00'
 >>> 
+
+
 ```
