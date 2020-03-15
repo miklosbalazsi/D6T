@@ -10,13 +10,17 @@
 import serial
 import serial.tools.list_ports
 
+DEV_TYPE = {0: "COORDINATOR",
+            1: "ROUTER",
+            2: "TERMINAL"
+            }
+
 BAUDRATE = 115200
 TIMEOUT = 1
 VID = 0x1a86  # 6790
 PID = 0x7523  # 29987
 VENDOR = "QinHeng Electronics"
 PRODUCT = "HL-340 USB-Serial adapter"
-
 e18_devices = []
 
 serialPortList = serial.tools.list_ports.comports()
@@ -37,14 +41,16 @@ for serialPort in serialPortList:
         e18_devices.append(serialPort)
 
 for dev in e18_devices:
-    print("Open Serial connection to : {}\n".format(dev.device))
+    print("Open Serial connection to : {}".format(dev.device))
     ser = serial.Serial(dev.device)
     ser.baudrate = BAUDRATE
     ser.timeout = TIMEOUT
     txBytes = b"\xfe\x01\x01\xff"
-    print("Tx : {}\n".format(txBytes))
+    print("Tx : {}".format(txBytes))
     ser.write(txBytes)
     rxBytes = ser.read(2)
-    print("TR : {}\n".format(rxBytes))
-    print("Close Serial connection to : {}\n".format(dev.device))
+    rxByteArray = bytearray(rxBytes)
+    print("Rx : {}".format(rxBytes))
+    print("Device Type : {}".format(DEV_TYPE[rxByteArray[1]]))
+    print("Close Serial connection to : {}".format(dev.device))
     ser.close()
