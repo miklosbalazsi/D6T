@@ -21,9 +21,7 @@ e18_devices = []
 serialPortList = serial.tools.list_ports.comports()
 for serialPort in serialPortList:
     if serialPort.vid == VID and serialPort.pid == PID:
-        print('Found : ' + serialPort.location + ' as a Ebyte E18 device')
-        e18_devices.append(serialPort)
-
+        print('Found ' + serialPort.device + ' as an Ebyte E18 device ')
         print("device : {}".format(serialPort.device))
         print("name : {}".format(serialPort.name))
         print("description : {}".format(serialPort.description))
@@ -35,3 +33,17 @@ for serialPort in serialPortList:
         print("manufacturer : {}".format(serialPort.manufacturer))
         print("product : {}".format(serialPort.product))
         print("interface : {} \n".format(serialPort.interface))
+        e18_devices.append(serialPort)
+
+for dev in e18_devices:
+    print("Open Serial connection to : {}\n".format(dev.device))
+    ser = serial.Serial(dev.device)
+    ser.baudrate = BAUDRATE
+    ser.timeout = 1
+    txBytes = "\xfe\x01\x01\xff"
+    print("Tx : {}\n".format(trBytes))
+    ser.write(txBytes)
+    trBytes = ser.read(2)
+    print("TR : {}\n".format(trBytes))
+    print("Close Serial connection to : {}\n".format(dev.device))
+    ser.close()
