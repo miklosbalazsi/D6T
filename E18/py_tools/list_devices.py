@@ -40,10 +40,10 @@ for dev in e18_devices:
     ser = serial.Serial(dev.device)
     ser.baudrate = BAUDRATE
     ser.timeout = 1
-    txBytes = 0xfe0101ff
-    print("Tx : {}\n".format(txBytes))
+    txBytes = "\xfe\x01\x01\xff"
+    print("Tx : {:x}\n".format(txBytes))
     ser.write(txBytes)
     rxBytes = ser.read(2)
-    print("TR : {}\n".format(rxBytes))
+    print("TR : {:x}\n".format(rxBytes))
     print("Close Serial connection to : {}\n".format(dev.device))
     ser.close()
