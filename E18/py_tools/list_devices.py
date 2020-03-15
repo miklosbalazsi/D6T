@@ -20,7 +20,7 @@ e18_devices = []
 
 serialPortList = serial.tools.list_ports.comports()
 for serialPort in serialPortList:
-    if (serialPort.vid == VID & & serialPort.pid == PID):
+    if serialPort.vid == VID and serialPort.pid == PID:
         print(f'Found : {serialPort.location} as a Ebyte E18 device ')
         e18_devices.append(serialPort)
 
