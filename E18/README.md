@@ -1,3 +1,6 @@
+https://readthedocs.org/projects/pyserial/downloads/pdf/latest/  
+https://pyserial.readthedocs.io/en/latest/shortintro.html
+
 ``` python
 miklos@raspberrypi ~ $ python
 Python 2.7.13 (default, Sep 26 2018, 18:42:22) 
