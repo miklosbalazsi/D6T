@@ -1,4 +1,3 @@
-test 
 https://readthedocs.org/projects/pyserial/downloads/pdf/latest/  
 https://pyserial.readthedocs.io/en/latest/shortintro.html
 
