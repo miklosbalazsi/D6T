@@ -40,7 +40,7 @@ for dev in e18_devices:
     ser = serial.Serial(dev.device)
     ser.baudrate = BAUDRATE
     ser.timeout = 1
-    txBytes = "\xfe\x01\x01\xff"
+    txBytes = 0xfe0101ff
     print("Tx : {}\n".format(txBytes))
     ser.write(txBytes)
     rxBytes = ser.read(2)
