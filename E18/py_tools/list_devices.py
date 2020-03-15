@@ -15,6 +15,9 @@ DEV_TYPE = {0: "COORDINATOR",
             2: "TERMINAL"
             }
 
+NWK_STATE = {0: "NO NETWORK",
+             1: "NETWORK EXISTS"}
+
 BAUDRATE = 115200
 TIMEOUT = 1
 VID = 0x1a86  # 6790
@@ -45,12 +48,34 @@ for dev in e18_devices:
     ser = serial.Serial(dev.device)
     ser.baudrate = BAUDRATE
     ser.timeout = TIMEOUT
-    txBytes = b"\xfe\x01\x01\xff"
+    txBytes = b"\xfe\x01\xfe\xff"
     print("Tx : {}".format(txBytes))
     ser.write(txBytes)
-    rxBytes = ser.read(2)
+    rxBytes = ser.read(46)
     rxByteArray = bytearray(rxBytes)
     print("Rx : {}".format(rxBytes))
-    print("Device Type : {}".format(DEV_TYPE[rxByteArray[1]]))
+    print("Device Type   : {}".format(DEV_TYPE[rxByteArray[0]]))
+    print("Network State : {}".format(NWK_STATE[rxByteArray[1]]))
+    print("Network PANID : {:X}{:X}".format(rxByteArray[2], rxByteArray[3]))
+    print("Network KEY   : {:X}{:X}{:X}{:X}{:X}{:X}{:X}{:X}{:X}{:X}{:X}{:X}{:X}{:X}{:X}{:X} ".format(rxByteArray[4],
+                                                                                                     rxByteArray[5],
+                                                                                                     rxByteArray[6],
+                                                                                                     rxByteArray[7],
+                                                                                                     rxByteArray[8],
+                                                                                                     rxByteArray[9],
+                                                                                                     rxByteArray[10],
+                                                                                                     rxByteArray[11],
+                                                                                                     rxByteArray[12],
+                                                                                                     rxByteArray[13],
+                                                                                                     rxByteArray[14],
+                                                                                                     rxByteArray[15],
+                                                                                                     rxByteArray[16],
+                                                                                                     rxByteArray[17],
+                                                                                                     rxByteArray[18],
+                                                                                                     rxByteArray[19],
+                                                                                                     rxByteArray[20],
+                                                                                                     ))
+    print("Network ShortAddr : {:X}{:X}".format(rxByteArray[21], rxByteArray[22]))
+
     print("Close Serial connection to : {}".format(dev.device))
     ser.close()
