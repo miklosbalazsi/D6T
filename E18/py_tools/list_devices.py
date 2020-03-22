@@ -14,7 +14,7 @@ def main():
     logging.basicConfig(level=logging.INFO)
     logging.info('Started...')
     e18_devices = []
-    e18_devices = E18.driver.find_e18_devices()
+    e18_devices = E18.driver.e18_device.find_e18_devices()
     if len(e18_devices) == 0: raise Exception("No E18 device found...exiting")
 
     logging.info('Found {} E18 device(s)'.format(len(e18_devices)))

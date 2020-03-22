@@ -2,7 +2,7 @@
 
 import serial
 import serial.tools.list_ports
-import CONST
+from . import CONST
 import logging
 
 
