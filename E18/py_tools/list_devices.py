@@ -21,7 +21,7 @@ def main():
 
     for port in e18_devices:
         e18_dev = e18.E18_driver.e18_device(port)
-        print e18_dev.get_device_type()
+        print(e18_dev.get_device_type())
         e18_dev.close()
 
 
