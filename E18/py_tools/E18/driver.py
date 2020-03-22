@@ -26,11 +26,11 @@ class e18_device:
 
     def get_serial_name(self):
         """ Return the name of the Serial device  eg.: /dev/tty/USB1 """
-        return self.SERIAL_CONNECTION.device
+        return self.__SERIAL_CONNECTION.device
 
     def get_serial_hwid(self):
         """ Return the hardware ID of the serial device """
-        return self.SERIAL_CONNECTION.hwid
+        return self.__SERIAL_CONNECTION.hwid
 
     def get_device_type(self):
         """
@@ -39,8 +39,8 @@ class e18_device:
             01 : ROUTER
             02 : TERMINAL
         """
-        self.SERIAL_CONNECTION.write(CONST.READ_DEVICE_TYPE)
-        rxBytes = bytearray(self.SERIAL_CONNECTION.read(2))
+        self.__SERIAL_CONNECTION.write(CONST.READ_DEVICE_TYPE)
+        rxBytes = bytearray(self.__SERIAL_CONNECTION.read(2))
         return CONST.E18_DEV_TYPE[rxBytes[1]]
 
     @staticmethod
