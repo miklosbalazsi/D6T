@@ -7,20 +7,20 @@
 #       idProduct          0x7523 HL-340 USB-Serial adapter
 
 import logging
-import e18.E18_driver
+import E18.driver
 
 
 def main():
     logging.basicConfig(level=logging.INFO)
     logging.info('Started...')
     e18_devices = []
-    e18_devices = e18.E18_driver.find_e18_devices()
+    e18_devices = E18.driver.find_e18_devices()
     if len(e18_devices) == 0: raise Exception("No E18 device found...exiting")
 
     logging.info('Found {} E18 device(s)'.format(len(e18_devices)))
 
     for port in e18_devices:
-        e18_dev = e18.E18_driver.e18_device(port)
+        e18_dev = E18.driver.e18_device(port)
         print(e18_dev.get_device_type())
         e18_dev.close()
 

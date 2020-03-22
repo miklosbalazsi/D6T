@@ -2,7 +2,7 @@
 
 import serial
 import serial.tools.list_ports
-import E18_CONST
+import CONST
 import logging
 
 
@@ -39,9 +39,9 @@ class e18_device:
             01 : ROUTER
             02 : TERMINAL
         """
-        self.SERIAL_CONNECTION.write(E18_CONST.READ_DEVICE_TYPE)
+        self.SERIAL_CONNECTION.write(CONST.READ_DEVICE_TYPE)
         rxBytes = bytearray(self.SERIAL_CONNECTION.read(2))
-        return E18_CONST.E18_DEV_TYPE[rxBytes[1]]
+        return CONST.E18_DEV_TYPE[rxBytes[1]]
 
     @staticmethod
     def find_e18_devices():
@@ -49,7 +49,7 @@ class e18_device:
         e18_devices = []
         serialPortList = serial.tools.list_ports.comports()
         for serialPort in serialPortList:
-            if serialPort.vid == E18_CONST.DEVICE_VID and serialPort.pid == E18_CONST.DEVICE_PID:
+            if serialPort.vid == CONST.DEVICE_VID and serialPort.pid == CONST.DEVICE_PID:
                 logging.debug('Found ' + serialPort.device + ' as an Ebyte E18 device ')
                 logging.debug("device : {}".format(serialPort.device))
                 logging.debug("name : {}".format(serialPort.name))
