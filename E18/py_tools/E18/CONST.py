@@ -7,22 +7,22 @@ DEVICE_VENDOR = "QinHeng Electronics"
 DEVICE_PRODUCT = "HL-340 USB-Serial adapter"
 
 # Device types
-E18_DEV_TYPE = {0: "COORDINATOR",
-                1: "ROUTER",
-                2: "TERMINAL"
-                }
+DEV_TYPE = {0: "COORDINATOR",
+            1: "ROUTER",
+            2: "TERMINAL"
+            }
 
 # Network states
-E18_NWK_STATE = {0: "NO NETWORK",
-                 1: "NETWORK EXISTS"
-                 }
+NWK_STATE = {0: "NO NETWORK",
+             1: "NETWORK EXISTS"
+             }
 # Power
-E18_TX_POWER = {0: -3,
-                1: -1.5,
-                2: 0,
-                3: 2.5,
-                4: 4.5
-                }
+TX_POWER = {0: -3,
+            1: -1.5,
+            2: 0,
+            3: 2.5,
+            4: 4.5
+            }
 
 # Define Read commands
 READ_DEVICE_TYPE = b"\xFE\x01\x01\xFF"

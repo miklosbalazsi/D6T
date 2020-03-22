@@ -32,16 +32,24 @@ class e18_device:
         """ Return the hardware ID of the serial device """
         return self.__SERIAL_CONNECTION.hwid
 
-    def get_device_type(self):
-        """
-            Read device type
+    def read_device_type(self):
+        """ Read device type
             00 : COORDINATOR
             01 : ROUTER
             02 : TERMINAL
         """
         self.__SERIAL_CONNECTION.write(CONST.READ_DEVICE_TYPE)
         rxBytes = bytearray(self.__SERIAL_CONNECTION.read(2))
-        return CONST.E18_DEV_TYPE[rxBytes[1]]
+        return CONST.DEV_TYPE[rxBytes[1]]
+
+    def read_network_state(self):
+        """ Return the state of the network
+            00 : NO NETWORK
+            01 : NETWORK EXISTS
+        """
+        self.__SERIAL_CONNECTION.write(CONST.READ_NETWORK_STATE)
+        rxBytes = bytearray(self.__SERIAL_CONNECTION.read(2))
+        return CONST.NWK_STATE[rxBytes[1]]
 
     @staticmethod
     def find_e18_devices():
