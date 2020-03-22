@@ -102,4 +102,4 @@ for dev in e18_devices:
     print("Sleep time : {:X}".format(rxByteArray[46]))
 
 print("Close Serial connection to : {}".format(dev.device))
-    ser.close()
+ser.close()
