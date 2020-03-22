@@ -77,5 +77,29 @@ for dev in e18_devices:
                                                                                                      ))
     print("Network ShortAddr : {:X}{:X}".format(rxByteArray[22], rxByteArray[23]))
 
-    print("Close Serial connection to : {}".format(dev.device))
+    print("Mac Addr : {:X}{:X}".format(rxByteArray[22], rxByteArray[23]))
+    print("Mac Addr : {:X}{:X}{:X}{:X}{:X}{:X}{:X}{:X}".format(rxByteArray[24],
+                                                               rxByteArray[25],
+                                                               rxByteArray[26],
+                                                               rxByteArray[27],
+                                                               rxByteArray[28],
+                                                               rxByteArray[29],
+                                                               rxByteArray[30],
+                                                               rxByteArray[31]))
+    print("Coordinator Short Addr : {:X}{:X}".format(rxByteArray[32], rxByteArray[33]))
+    print("Coordinator Mac Addr : {:X}{:X}{:X}{:X}{:X}{:X}{:X}{:X}".format(rxByteArray[34],
+                                                                           rxByteArray[35],
+                                                                           rxByteArray[36],
+                                                                           rxByteArray[37],
+                                                                           rxByteArray[38],
+                                                                           rxByteArray[39],
+                                                                           rxByteArray[40],
+                                                                           rxByteArray[41]))
+    print("Group : {:X}".format(rxByteArray[42]))
+    print("Channel : {:X}".format(rxByteArray[43]))
+    print("Tx power : {:X}".format(rxByteArray[44]))
+    print("Baud : {:X}".format(rxByteArray[45]))
+    print("Sleep time : {:X}".format(rxByteArray[46]))
+
+print("Close Serial connection to : {}".format(dev.device))
     ser.close()
