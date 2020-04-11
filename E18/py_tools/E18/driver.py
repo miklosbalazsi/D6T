@@ -56,6 +56,7 @@ class e18_device:
 
         :return: bytearray
         """
+        self.__SERIAL_CONNECTION.reset_input_buffer()
         self.__SERIAL_CONNECTION.write(CONST.READ_NETWORK_PAN_ID)
         rxBytes = bytearray(self.__SERIAL_CONNECTION.read(3))
         return ''.join(format(x, '02x') for x in rxBytes)
@@ -64,31 +65,37 @@ class e18_device:
         """
         :return: bytearray
         """
+        self.__SERIAL_CONNECTION.reset_input_buffer()
         self.__SERIAL_CONNECTION.write(CONST.READ_NETWORK_KEY)
         rxBytes = bytearray(self.__SERIAL_CONNECTION.read(3))
         return ''.join(format(x, '02x') for x in rxBytes)
 
     def read_network_group_number(self):
+        self.__SERIAL_CONNECTION.reset_input_buffer()
         self.__SERIAL_CONNECTION.write(CONST.READ_NETWORK_GROUP_NUMBER)
         rxBytes = bytearray(self.__SERIAL_CONNECTION.read(2))
         return ''.join(format(x, '02x') for x in rxBytes)
 
     def read_local_short_addr(self):
+        self.__SERIAL_CONNECTION.reset_input_buffer()
         self.__SERIAL_CONNECTION.write(CONST.READ_LOCAL_SHORT_ADDR)
         rxBytes = bytearray(self.__SERIAL_CONNECTION.read(3))
         return ''.join(format(x, '02x') for x in rxBytes)
 
     def read_local_mac_addr(self):
+        self.__SERIAL_CONNECTION.reset_input_buffer()
         self.__SERIAL_CONNECTION.write(CONST.READ_LOCAL_MAC_ADDR)
         rxBytes = bytearray(self.__SERIAL_CONNECTION.read(9))
         return ''.join(format(x, '02x') for x in rxBytes)
 
     def read_coord_short_addr(self):
+        self.__SERIAL_CONNECTION.reset_input_buffer()
         self.__SERIAL_CONNECTION.write(CONST.READ_COORD_SHORT_ADDR)
         rxBytes = bytearray(self.__SERIAL_CONNECTION.read(3))
         return ''.join(format(x, '02x') for x in rxBytes)
 
     def read_coord_mac_addr(self):
+        self.__SERIAL_CONNECTION.reset_input_buffer()
         self.__SERIAL_CONNECTION.write(CONST.READ_COORD_MAC_ADDR)
         rxBytes = bytearray(self.__SERIAL_CONNECTION.read(9))
         logging.info("bytearray count : " + str(len(rxBytes)))
