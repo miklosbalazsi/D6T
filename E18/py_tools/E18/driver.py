@@ -91,7 +91,7 @@ class e18_device:
     def read_coord_mac_addr(self):
         self.__SERIAL_CONNECTION.write(CONST.READ_COORD_MAC_ADDR)
         rxBytes = bytearray(self.__SERIAL_CONNECTION.read(9))
-        logging.info("bytearray count : " + rxBytes.count())
+        logging.info("bytearray count : " + len(rxBytes))
         return ''.join(format(x, '02x') for x in rxBytes)
 
     @staticmethod
