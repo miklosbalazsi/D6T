@@ -34,8 +34,8 @@ def main():
         logging.info("Coord MAC Addr : " + e18_dev.read_coord_mac_addr())
 
         logging.info("Read GPIO : ")
-        logging.info("P0_0 : " + e18_dev.read_gpio_state(e18_dev.short_addr, "P0_0"))
-        logging.info("P0_0 : " + e18_dev.read_gpio_value(e18_dev.short_addr, "P0_0"))
+        logging.info("P0_0 : " + e18_dev.read_gpio_state(e18_dev.short_addr, "P0_1"))
+        logging.info("P0_0 : " + e18_dev.read_gpio_value(e18_dev.short_addr, "P0_1"))
         e18_dev.close()
 
 
