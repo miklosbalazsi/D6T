@@ -58,7 +58,7 @@ class e18_device:
         """
         self.__SERIAL_CONNECTION.write(CONST.READ_NETWORK_PAN_ID)
         rxBytes = bytearray(self.__SERIAL_CONNECTION.read(3))
-        return rxBytes
+        return ''.join(format(x, '02x') for x in rxBytes)
 
     def read_network_key(self):
         """
@@ -67,7 +67,7 @@ class e18_device:
         """
         self.__SERIAL_CONNECTION.write(CONST.READ_NETWORK_KEY)
         rxBytes = bytearray(self.__SERIAL_CONNECTION.read(3))
-        return rxBytes
+        return ''.join(format(x, '02x') for x in rxBytes)
 
     @staticmethod
     def find_e18_devices():
