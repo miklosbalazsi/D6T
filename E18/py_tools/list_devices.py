@@ -21,7 +21,6 @@ def main():
 
     for port in e18_devices:
         e18_dev = E18.driver.e18_device(port)
-
         device_type = e18_dev.read_device_type()
 
         logging.info("Device : " + port)
@@ -32,10 +31,8 @@ def main():
         logging.info("Network Grp Num : " + e18_dev.read_network_group_number())
         logging.info("Local Short Addr : " + e18_dev.read_local_short_addr())
         logging.info("Local  MAC Addr : " + e18_dev.read_local_mac_addr())
-
-        if (device_type != 'COORDINATOR'):
-            logging.info("Coord Short Addr : " + e18_dev.read_coord_short_addr())
-            logging.info("Coord MAC Addr : " + e18_dev.read_coord_mac_addr())
+        logging.info("Coord Short Addr : " + e18_dev.read_coord_short_addr())
+        logging.info("Coord MAC Addr : " + e18_dev.read_coord_mac_addr())
 
         logging.info("\n")
         e18_dev.close()
