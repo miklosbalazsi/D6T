@@ -27,7 +27,13 @@ def main():
         logging.info("Network State : " + e18_dev.read_network_state())
         logging.info("Network PANID : " + e18_dev.read_network_panID())
         logging.info("Network Key : " + e18_dev.read_network_key())
-        logging.info("");
+        logging.info("Network Grp Num : " + e18_dev.read_network_group_number())
+        logging.info("Local Short Addr : " + e18_dev.read_local_short_addr())
+        logging.info("Local  MAC Addr : " + e18_dev.read_local_mac_addr())
+        logging.info("Coord Short Addr : " + e18_dev.read_coord_short_addr())
+        logging.info("Coord MAC Addr : " + e18_dev.read_coord_mac_addr())
+
+        logging.info("\n")
         e18_dev.close()
 
 
