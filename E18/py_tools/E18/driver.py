@@ -126,6 +126,7 @@ class e18_device:
         self.__SERIAL_CONNECTION.reset_input_buffer()
 
         payload = CONST.READ_GPIO_STATE + short_addr + CONST.GPIO_PORTS[gpio_port]
+        logging.debug("PAYLOAD : " + ''.join(format(x, '02x') for x in payload))
         self.__SERIAL_CONNECTION.write(payload)
         rxBytes = bytearray(self.__SERIAL_CONNECTION.read(5))
         logging.debug("rxBytes count : " + str(len(rxBytes)))
@@ -135,6 +136,7 @@ class e18_device:
         self.__SERIAL_CONNECTION.reset_input_buffer()
 
         payload = CONST.READ_GPIO_VALUE + short_addr + CONST.GPIO_PORTS[gpio_port]
+        logging.debug("PAYLOAD : " + ''.join(format(x, '02x') for x in payload))
         self.__SERIAL_CONNECTION.write(payload)
         rxBytes = bytearray(self.__SERIAL_CONNECTION.read(5))
         logging.debug("rxBytes count : " + str(len(rxBytes)))

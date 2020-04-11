@@ -11,7 +11,7 @@ import E18.driver
 
 
 def main():
-    logging.basicConfig(level=logging.INFO)
+    logging.basicConfig(level=logging.debug)
     logging.info('Started...')
     e18_devices = []
     e18_devices = E18.driver.e18_device.find_e18_devices()
