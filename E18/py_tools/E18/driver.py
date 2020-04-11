@@ -12,7 +12,7 @@ class e18_device:
     __SERIAL_CONNECTION = None
     __SERIAL_NAME = None
     __SERIAL_BAUDRATE = 115200
-    __SERIAL_TIMEOUT = 5
+    __SERIAL_TIMEOUT = 10
 
     def __init__(self, serial_name):
         """ Constructor """
