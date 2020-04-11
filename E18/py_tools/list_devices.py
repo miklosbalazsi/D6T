@@ -27,7 +27,7 @@ def main():
         logging.info("Network State : " + e18_dev.read_network_state())
         logging.info("Network PANID : " + e18_dev.read_network_panID())
         logging.info("Network Key : " + e18_dev.read_network_key())
-
+        logging.info("");
         e18_dev.close()
 
 
