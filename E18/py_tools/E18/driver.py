@@ -51,6 +51,24 @@ class e18_device:
         rxBytes = bytearray(self.__SERIAL_CONNECTION.read(2))
         return CONST.NWK_STATE[rxBytes[1]]
 
+    def read_network_panID(self):
+        """
+
+        :return: bytearray
+        """
+        self.__SERIAL_CONNECTION.write(CONST.READ_NETWORK_PAN_ID)
+        rxBytes = bytearray(self.__SERIAL_CONNECTION.read(3))
+        return rxBytes
+
+    def read_network_key(self):
+        """
+
+        :return:
+        """
+        self.__SERIAL_CONNECTION.write(CONST.READ_NETWORK_KEY)
+        rxBytes = bytearray(self.__SERIAL_CONNECTION.read(3))
+        return rxBytes
+
     @staticmethod
     def find_e18_devices():
         """ Find E18 devices and return list of SerialPorts """

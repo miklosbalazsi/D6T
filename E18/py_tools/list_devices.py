@@ -21,9 +21,13 @@ def main():
 
     for port in e18_devices:
         e18_dev = E18.driver.e18_device(port)
+
         logging.info("Device : " + port)
         logging.info("Device Type : " + e18_dev.read_device_type())
         logging.info("Network State : " + e18_dev.read_network_state())
+        logging.info("Network PANID : " + e18_dev.read_network_panID())
+        logging.info("Network Key : " + e18_dev.read_network_key())
+
         e18_dev.close()
 
 
