@@ -125,6 +125,8 @@ class e18_device:
         """
         self.__SERIAL_CONNECTION.reset_input_buffer()
 
+        print(short_addr)
+        print(CONST.GPIO_PORTS[gpio_port])
         payload = CONST.READ_GPIO_STATE + short_addr + CONST.GPIO_PORTS[gpio_port] + b"\xFF"
         logging.debug("PAYLOAD : " + ''.join(format(x, '02x') for x in payload))
         self.__SERIAL_CONNECTION.write(payload)
