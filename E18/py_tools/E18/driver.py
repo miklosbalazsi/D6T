@@ -15,7 +15,7 @@ class e18_device:
     __SERIAL_TIMEOUT = 10
 
     device_type = ""
-    short_addr = bytearray(2)
+    short_addr = ""
     mac_addr = bytearray(8)
 
     def __init__(self, serial_name):
@@ -90,7 +90,7 @@ class e18_device:
         self.__SERIAL_CONNECTION.write(CONST.READ_LOCAL_SHORT_ADDR)
         rxBytes = bytearray(self.__SERIAL_CONNECTION.read(3))
         logging.debug("rxBytes count : " + str(len(rxBytes)))
-        self.short_addr = rxBytes[1:]
+        self.short_addr = rxBytes[1] + rxBytes[2]
         return ''.join(format(x, '02x') for x in rxBytes)
 
     def read_local_mac_addr(self):
@@ -125,7 +125,7 @@ class e18_device:
         """
         self.__SERIAL_CONNECTION.reset_input_buffer()
 
-        payload = CONST.READ_GPIO_STATE + short_addr + CONST.GPIO_PORTS[gpio_port]
+        payload = CONST.READ_GPIO_STATE + short_addr + CONST.GPIO_PORTS[gpio_port] + b"\xFF"
         logging.debug("PAYLOAD : " + ''.join(format(x, '02x') for x in payload))
         self.__SERIAL_CONNECTION.write(payload)
         rxBytes = bytearray(self.__SERIAL_CONNECTION.read(5))
@@ -135,7 +135,7 @@ class e18_device:
     def read_gpio_value(self, short_addr, gpio_port):
         self.__SERIAL_CONNECTION.reset_input_buffer()
 
-        payload = CONST.READ_GPIO_VALUE + short_addr + CONST.GPIO_PORTS[gpio_port]
+        payload = CONST.READ_GPIO_VALUE + short_addr + CONST.GPIO_PORTS[gpio_port] + b"\xFF"
         logging.debug("PAYLOAD : " + ''.join(format(x, '02x') for x in payload))
         self.__SERIAL_CONNECTION.write(payload)
         rxBytes = bytearray(self.__SERIAL_CONNECTION.read(5))
