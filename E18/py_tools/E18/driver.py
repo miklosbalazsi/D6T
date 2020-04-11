@@ -14,6 +14,10 @@ class e18_device:
     __SERIAL_BAUDRATE = 115200
     __SERIAL_TIMEOUT = 10
 
+    device_type = ""
+    short_addr = bytearray(2)
+    mac_addr = bytearray(8)
+
     def __init__(self, serial_name):
         """ Constructor """
         self.__SERIAL_NAME = serial_name
@@ -40,6 +44,7 @@ class e18_device:
         """
         self.__SERIAL_CONNECTION.write(CONST.READ_DEVICE_TYPE)
         rxBytes = bytearray(self.__SERIAL_CONNECTION.read(2))
+        logging.debug("rxBytes count : " + str(len(rxBytes)))
         return CONST.DEV_TYPE[rxBytes[1]]
 
     def read_network_state(self):
@@ -49,6 +54,7 @@ class e18_device:
         """
         self.__SERIAL_CONNECTION.write(CONST.READ_NETWORK_STATE)
         rxBytes = bytearray(self.__SERIAL_CONNECTION.read(2))
+        logging.debug("rxBytes count : " + str(len(rxBytes)))
         return CONST.NWK_STATE[rxBytes[1]]
 
     def read_network_panID(self):
@@ -59,6 +65,7 @@ class e18_device:
         self.__SERIAL_CONNECTION.reset_input_buffer()
         self.__SERIAL_CONNECTION.write(CONST.READ_NETWORK_PAN_ID)
         rxBytes = bytearray(self.__SERIAL_CONNECTION.read(3))
+        logging.debug("rxBytes count : " + str(len(rxBytes)))
         return ''.join(format(x, '02x') for x in rxBytes)
 
     def read_network_key(self):
@@ -68,37 +75,69 @@ class e18_device:
         self.__SERIAL_CONNECTION.reset_input_buffer()
         self.__SERIAL_CONNECTION.write(CONST.READ_NETWORK_KEY)
         rxBytes = bytearray(self.__SERIAL_CONNECTION.read(3))
+        logging.debug("rxBytes count : " + str(len(rxBytes)))
         return ''.join(format(x, '02x') for x in rxBytes)
 
     def read_network_group_number(self):
         self.__SERIAL_CONNECTION.reset_input_buffer()
         self.__SERIAL_CONNECTION.write(CONST.READ_NETWORK_GROUP_NUMBER)
         rxBytes = bytearray(self.__SERIAL_CONNECTION.read(2))
+        logging.debug("rxBytes count : " + str(len(rxBytes)))
         return ''.join(format(x, '02x') for x in rxBytes)
 
     def read_local_short_addr(self):
         self.__SERIAL_CONNECTION.reset_input_buffer()
         self.__SERIAL_CONNECTION.write(CONST.READ_LOCAL_SHORT_ADDR)
         rxBytes = bytearray(self.__SERIAL_CONNECTION.read(3))
+        logging.debug("rxBytes count : " + str(len(rxBytes)))
+        self.short_addr = rxBytes[1:]
         return ''.join(format(x, '02x') for x in rxBytes)
 
     def read_local_mac_addr(self):
         self.__SERIAL_CONNECTION.reset_input_buffer()
         self.__SERIAL_CONNECTION.write(CONST.READ_LOCAL_MAC_ADDR)
         rxBytes = bytearray(self.__SERIAL_CONNECTION.read(9))
+        logging.debug("rxBytes count : " + str(len(rxBytes)))
+        self.mac_addr = rxBytes[1:]
         return ''.join(format(x, '02x') for x in rxBytes)
 
     def read_coord_short_addr(self):
         self.__SERIAL_CONNECTION.reset_input_buffer()
         self.__SERIAL_CONNECTION.write(CONST.READ_COORD_SHORT_ADDR)
         rxBytes = bytearray(self.__SERIAL_CONNECTION.read(3))
+        logging.debug("rxBytes count : " + str(len(rxBytes)))
         return ''.join(format(x, '02x') for x in rxBytes)
 
     def read_coord_mac_addr(self):
         self.__SERIAL_CONNECTION.reset_input_buffer()
         self.__SERIAL_CONNECTION.write(CONST.READ_COORD_MAC_ADDR)
         rxBytes = bytearray(self.__SERIAL_CONNECTION.read(9))
-        logging.info("bytearray count : " + str(len(rxBytes)))
+        logging.debug("rxBytes count : " + str(len(rxBytes)))
+        return ''.join(format(x, '02x') for x in rxBytes)
+
+    def read_gpio_state(self, short_addr, gpio_port):
+        """
+        Read GPIO port state : INPUT|OUTPUT
+
+        :param short_add: E18 device short address \x00\x00
+        :param gpio_port: P0_0, P0_1, P0_2, P0_3, P0_4, P0_5, P2_0, P2_1, P2_2
+        :return: string
+        """
+        self.__SERIAL_CONNECTION.reset_input_buffer()
+
+        payload = CONST.READ_GPIO_STATE + short_addr + CONST.GPIO_PORTS[gpio_port]
+        self.__SERIAL_CONNECTION.write(payload)
+        rxBytes = bytearray(self.__SERIAL_CONNECTION.read(5))
+        logging.debug("rxBytes count : " + str(len(rxBytes)))
+        return ''.join(format(x, '02x') for x in rxBytes)
+
+    def read_gpio_value(self, short_addr, gpio_port):
+        self.__SERIAL_CONNECTION.reset_input_buffer()
+
+        payload = CONST.READ_GPIO_VALUE + short_addr + CONST.GPIO_PORTS[gpio_port]
+        self.__SERIAL_CONNECTION.write(payload)
+        rxBytes = bytearray(self.__SERIAL_CONNECTION.read(5))
+        logging.debug("rxBytes count : " + str(len(rxBytes)))
         return ''.join(format(x, '02x') for x in rxBytes)
 
     @staticmethod

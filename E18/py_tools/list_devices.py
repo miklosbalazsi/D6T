@@ -21,10 +21,9 @@ def main():
 
     for port in e18_devices:
         e18_dev = E18.driver.e18_device(port)
-        device_type = e18_dev.read_device_type()
 
         logging.info("Device : " + port)
-        logging.info("Device Type : " + device_type)
+        logging.info("Device Type : " + e18_dev.read_device_type())
         logging.info("Network State : " + e18_dev.read_network_state())
         logging.info("Network PANID : " + e18_dev.read_network_panID())
         logging.info("Network Key : " + e18_dev.read_network_key())
@@ -34,7 +33,9 @@ def main():
         logging.info("Coord Short Addr : " + e18_dev.read_coord_short_addr())
         logging.info("Coord MAC Addr : " + e18_dev.read_coord_mac_addr())
 
-        logging.info("\n")
+        logging.info("Read GPIO : ")
+        logging.info("P0_0 : " + e18_dev.read_gpio_state(e18_dev.short_addr, "P0_0"))
+        logging.info("P0_0 : " + e18_dev.read_gpio_value(e18_dev.short_addr, "P0_0"))
         e18_dev.close()
 
 
