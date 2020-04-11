@@ -15,7 +15,7 @@ class e18_device:
     __SERIAL_TIMEOUT = 10
 
     device_type = ""
-    short_addr = ""
+    short_addr = bytearray(2)
     mac_addr = bytearray(8)
 
     def __init__(self, serial_name):
@@ -90,7 +90,7 @@ class e18_device:
         self.__SERIAL_CONNECTION.write(CONST.READ_LOCAL_SHORT_ADDR)
         rxBytes = bytearray(self.__SERIAL_CONNECTION.read(3))
         logging.debug("rxBytes count : " + str(len(rxBytes)))
-        self.short_addr = rxBytes[1] + rxBytes[2]
+        self.short_addr = rxBytes[1:]
         return ''.join(format(x, '02x') for x in rxBytes)
 
     def read_local_mac_addr(self):
