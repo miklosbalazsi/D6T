@@ -19,7 +19,7 @@ miklos@raspberrypi ~ $ python3
 E18-PCB to CC-Debugger 
 
 ![CC-Debugger PinOut](https://www.waveshare.com/img/devkit/CC-Debugger/CC-Debugger-JTAG-Header.jpg)
-![E18]()
+![E18](Screenshot%20from%202020-11-21%2020-40-44.png)
 
     E18           CC-Debugger  
     Vcc           -> 9    
