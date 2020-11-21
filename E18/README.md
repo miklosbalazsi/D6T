@@ -21,11 +21,11 @@ E18-PCB to CC-Debugger
 ![CC-Debugger PinOut](https://www.waveshare.com/img/devkit/CC-Debugger/CC-Debugger-JTAG-Header.jpg)
 ![E18]()
 
-E18           CC-Debugger  
-Vcc           -> 9    
-GND           -> 1  
-DD (P2.1)     -> 4   
-DC            -> 3  
-RST           -> 7  
+  E18           CC-Debugger  
+  Vcc           -> 9    
+  GND           -> 1  
+  DD (P2.1)     -> 4   
+  DC            -> 3  
+  RST           -> 7  
 
 
