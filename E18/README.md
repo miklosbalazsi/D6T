@@ -22,10 +22,10 @@ E18-PCB to CC-Debugger
 ![E18]()
 
 E18           CC-Debugger  
-Vcc           -> 9  
-GND           -> 1
-DD (P2.1)     -> 4 
-DC            -> 3
-RST           -> 7
+Vcc           -> 9    
+GND           -> 1  
+DD (P2.1)     -> 4   
+DC            -> 3  
+RST           -> 7  
 
 
