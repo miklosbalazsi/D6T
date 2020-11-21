@@ -1,4 +1,9 @@
+
+### SDCC compiler manual
 http://sdcc.sourceforge.net/doc/sdccman.pdf
+
+### E18-PCB maual.pdf
+file:///home/miklos/Downloads/E18-TBL-01_Datasheet_EN_v1.0.pdf 
 
 https://readthedocs.org/projects/pyserial/downloads/pdf/latest/  
 https://pyserial.readthedocs.io/en/latest/shortintro.html
