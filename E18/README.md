@@ -29,3 +29,5 @@ E18-PCB to CC-Debugger
     RST           -> 7  
 
 
+CC2531 Sniffer example :
+https://blog.jimmo.id.au/2017/02/25/zigbee-packet-capture.html
