@@ -1,3 +1,7 @@
+http://sdcc.sourceforge.net/doc/sdccman.pdf
+
+
+
 https://readthedocs.org/projects/pyserial/downloads/pdf/latest/  
 https://pyserial.readthedocs.io/en/latest/shortintro.html
 
