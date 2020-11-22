@@ -34,5 +34,12 @@ E18-PCB to CC-Debugger
     RST           -> 7  
 
 
-CC2531 Sniffer example :
-https://blog.jimmo.id.au/2017/02/25/zigbee-packet-capture.html
+CC2531 Sniffer example :  
+https://blog.jimmo.id.au/2017/02/25/zigbee-packet-capture.html  
+
+### rPI2 pinout
+![rPI2](https://www.jameco.com/Jameco/workshop/circuitnotes/raspberry_pi_circuit_note_fig2.jpg)
+
+ 
+
+
