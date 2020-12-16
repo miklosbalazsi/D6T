@@ -1,3 +1,4 @@
+https://www.sjoerdlangkemper.nl/2018/02/14/cc2530/  
 
 ### SDCC compiler manual
 http://sdcc.sourceforge.net/doc/sdccman.pdf
