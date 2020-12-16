@@ -3,6 +3,7 @@
 
 #define uint unsigned int
 #define uchar unsigned char
+#define bin(a,b,c,d,e,f,g,h) (a<<7)|(b<<6)|(c<<5)|(d<<4)|(e<<3)|(f<<2)|(g<<1)|(h<<0)
 
 /*
  * Delay function
@@ -18,9 +19,9 @@ void initUart0(){
     while (CLKCONSTA & 0x40);   // wait for the crystal to stabilize
     CLKCONCMD &= ~0x47;         // Set the system main clock frequency to 32MHZ
 
-    PERCFG_U0CFG = 1;           // 0:Alt1 1:Alt2   CT-P1.2, RT-P1.3, Rx-P1.4, Tx-P1.5
-    P1SEL |= 0b00111100;        // P1 select 0: General Purpose 1: Peripheral purpose
-    P2SEL &= 0b10110111;        // Set USART0 priority over USART1 and Timer1
+    PERCFG.0 = 1;           // 0:Alt1 1:Alt2   CT-P1.2, RT-P1.3, Rx-P1.4, Tx-P1.5
+    P1SEL |= bin(0,0,1,1,1,1,0,0);        // P1 select 0: General Purpose 1: Peripheral purpose
+    P2SEL &= bin(1,0,1,1,0,1,1,1);        // Set USART0 priority over USART1 and Timer1
 
     U0CSR |= 0x80; //UART method
     U0GCR |= 8;// U0GCR cooperates with U0BAUD
@@ -31,11 +32,6 @@ void initUart0(){
     IEN2_UTX0IE = 1;
   /* 8N1 */
 //  U0UCR = 0b00000010; // FLUSH, Flow, D9, Bit9, Parity, Spb, Stop, Start
-}
-
-void sleep (uint s)  {
-    uint i;
-    for (i=0 ; i<s; i++){__asm__("nop;");}
 }
 
 void main(void)  {
