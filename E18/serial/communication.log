@@ -1,0 +1,49 @@
+Reset(resetForDebug=1)
+Reset(resetForDebug=1)
+ReadConfig(*pConfig=0x00) = 1
+WriteConfig(config=0x00) = 1
+ReadXdataMemory(address=0x6249, count=1, pProtection=0x00000000)
+ReadSfrMemory(address=0xC7, count=1, pProtection=0x00000000, addressIncrement=1)
+ReadStatus(*pStatus=0x00) = 1
+SetDebugInterfaceSpeed(slow=0)
+SetCodeBankCount(count=4)
+ReadConfig(*pConfig=0x00) = 1
+WriteConfig(config=0x00) = 1
+ReadStatus(*pStatus=0x00) = 1
+ReadSfrMemory(address=0xC7, count=1, pProtection=0x00000000, addressIncrement=1)
+WriteSfrMemory(address=0xC7, count=1, pProtection=0x00000000, addressIncrement=1)
+ReadXdataMemory(address=0xFFF0, count=16, pProtection=0x00000000)
+WriteSfrMemory(address=0xC7, count=1, pProtection=0x00000000, addressIncrement=1)
+ReadFlashLockBits(*pLockBitsN=..., maxNumBytes=16, *pDebugLocked=1) = 16
+Reset(resetForDebug=1)
+Reset(resetForDebug=1)
+ReadConfig(*pConfig=0x00) = 1
+WriteConfig(config=0x00) = 1
+ReadXdataMemory(address=0x6249, count=1, pProtection=0x00000000)
+ReadSfrMemory(address=0xC7, count=1, pProtection=0x00000000, addressIncrement=1)
+ReadConfig(*pConfig=0x00) = 1
+WriteConfig(config=0x00) = 1
+ReadProgCounter(*pProgCounter=0x0000, *pBank=0) = 1
+ReadSfrMemory(address=0xC7, count=1, pProtection=0x00000000, addressIncrement=1)
+WriteSfrMemory(address=0xC7, count=1, pProtection=0x00000000, addressIncrement=1)
+ReadXdataMemory(address=0x8000, count=128, pProtection=0x0AC04229)
+WriteSfrMemory(address=0xC7, count=1, pProtection=0x00000000, addressIncrement=1)
+ReadSfrMemory(address=0xC7, count=1, pProtection=0x00000000, addressIncrement=1)
+WriteSfrMemory(address=0xC7, count=1, pProtection=0x00000000, addressIncrement=1)
+ReadXdataMemory(address=0x807D, count=128, pProtection=0x0AC04229)
+WriteSfrMemory(address=0xC7, count=1, pProtection=0x00000000, addressIncrement=1)
+ReadSfrMemory(address=0xC7, count=1, pProtection=0x00000000, addressIncrement=1)
+WriteSfrMemory(address=0xC7, count=1, pProtection=0x00000000, addressIncrement=1)
+ReadXdataMemory(address=0x80FA, count=128, pProtection=0x0AC04229)
+WriteSfrMemory(address=0xC7, count=1, pProtection=0x00000000, addressIncrement=1)
+ReadSfrMemory(address=0xC6, count=1, pProtection=0x0AC19229, addressIncrement=1)
+ReadSfrMemory(address=0xC1, count=1, pProtection=0x0AC19229, addressIncrement=1)
+ReadSfrMemory(address=0xE8, count=1, pProtection=0x0AC19229, addressIncrement=1)
+ReadSfrMemory(address=0xF1, count=1, pProtection=0x0AC19229, addressIncrement=1)
+ReadSfrMemory(address=0xF4, count=1, pProtection=0x0AC19229, addressIncrement=1)
+ReadSfrMemory(address=0xF5, count=1, pProtection=0x0AC19229, addressIncrement=1)
+ReadSfrMemory(address=0xC5, count=1, pProtection=0x0AC19229, addressIncrement=1)
+ReadSfrMemory(address=0xC2, count=1, pProtection=0x0AC19229, addressIncrement=1)
+ReadSfrMemory(address=0xBE, count=1, pProtection=0x0AC19229, addressIncrement=1)
+ReadConfig(*pConfig=0x00) = 1
+StartCpu() = 1
