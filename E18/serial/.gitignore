@@ -1,0 +1,7 @@
+settings
+Debug
+*.log
+*.dep
+*.ewp
+*.ewd
+*.ewt
