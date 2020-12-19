@@ -78,7 +78,7 @@ void enableReceivingUart0(){
 }
 
 void disableReceivingUart0(){
-    //TODO    U0CSR |= 0X40;                             //receiving is allowed
+   
 }
 
 #endif //USART_H
