@@ -74,4 +74,6 @@ void sendCharUart0(char D){
   clearIrqFlag(IRCON2,1) // UTX0IF = 0; 
 }
 
+void allowReceivingUart0(){}
+
 #endif //USART_H
