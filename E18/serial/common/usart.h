@@ -49,7 +49,6 @@ void initUart0(){
     */
     UTX0IF = 0;
     
-    //TODO    U0CSR |= 0X40;                             //receiving is allowed
  
     /* Reset 0x00
     *  Set IEN2.2=1 (UTX0IE)
@@ -71,9 +70,15 @@ void sendCharUart0(char D){
   while (U0CSR_TX_BYTE != 1); //Wait for transmission ends 
   while ( UTX0IF != 1 ); // Wait for Send completed flag
   U0CSR_TX_BYTE = 0;
-  clearIrqFlag(IRCON2,1) // UTX0IF = 0; 
+  clearIrqFlag(IRCON2,1); // UTX0IF = 0; 
 }
 
-void allowReceivingUart0(){}
+void enableReceivingUart0(){
+    //TODO    U0CSR |= 0X40;                             //receiving is allowed
+}
+
+void disableReceivingUart0(){
+    //TODO    U0CSR |= 0X40;                             //receiving is allowed
+}
 
 #endif //USART_H

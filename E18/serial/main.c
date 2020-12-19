@@ -2,7 +2,7 @@
 #include "common/cc2530.h"
 #include "common/utils.h"
 #include "common/usart.h"
-#include "clock.h"
+#include "common/clock.h"
 #include "main.h"
 
 void main(void)  {

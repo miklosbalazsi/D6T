@@ -2229,10 +2229,13 @@
             <name>$PROJ_DIR$\lib\cc2530.h</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\common\clock.h</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\common\compiler.h</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\usart\usart.h</name>
+            <name>$PROJ_DIR$\common\usart.h</name>
         </file>
         <file>
             <name>$PROJ_DIR$\common\utils.h</name>
