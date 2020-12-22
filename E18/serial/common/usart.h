@@ -1,8 +1,7 @@
 #ifndef USART_H
 #define USART_H
 
-#include "compiler.h"
-#include "cc2530.h"
+#include "ioCC2530.h"
 #include "utils.h"
 
 /*
@@ -66,19 +65,42 @@ void initUart0(){
 *  Send one byte to USART0 Tx
 */
 void sendCharUart0(char D){
+
   U0DBUF = D;
-  while (U0CSR_TX_BYTE != 1); //Wait for transmission ends 
-  while ( UTX0IF != 1 ); // Wait for Send completed flag
+  while (U0CSR_TX_BYTE == 0); //Wait for transmission ends 
+  while ( UTX0IF == 0 ); // Wait for Send completed flag
   U0CSR_TX_BYTE = 0;
-  clearIrqFlag(IRCON2,1); // UTX0IF = 0; 
+  UTX0IF = 0; 
 }
 
+/*
+* Send multiple characters 
+*/
+void sendStringUart0(char *Data,int len){
+  int j;
+  for(j=0;j<len;j++){
+    U0DBUF = Data[j];
+//    while (U0CSR_TX_BYTE == 0); //Wait for transmission ends 
+    while (UTX0IF == 0); //Send completed flag
+    U0CSR_TX_BYTE = 0;
+    UTX0IF = 0;
+  }
+}
+
+/*
+* Enable USART0 receiving
+*/
 void enableReceivingUart0(){
     //TODO    U0CSR |= 0X40;                             //receiving is allowed
+  setBit(U0CSR,6);
+  
 }
 
+/*
+* Disable USART0 receiving
+*/
 void disableReceivingUart0(){
-   
+   clearBit(U0CSR,6);
 }
 
 #endif //USART_H
