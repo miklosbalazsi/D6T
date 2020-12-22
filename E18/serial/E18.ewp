@@ -2226,13 +2226,16 @@
     <group>
         <name>common</name>
         <file>
-            <name>$PROJ_DIR$\lib\cc2530.h</name>
+            <name>$PROJ_DIR$\common\cc2530.h</name>
         </file>
         <file>
             <name>$PROJ_DIR$\common\clock.h</name>
         </file>
         <file>
             <name>$PROJ_DIR$\common\compiler.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\common\ioCC2530.h</name>
         </file>
         <file>
             <name>$PROJ_DIR$\common\usart.h</name>
@@ -2243,8 +2246,5 @@
     </group>
     <file>
         <name>$PROJ_DIR$\main.c</name>
-    </file>
-    <file>
-        <name>$PROJ_DIR$\main.h</name>
     </file>
 </project>

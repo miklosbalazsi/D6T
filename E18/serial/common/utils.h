@@ -17,4 +17,12 @@ void delayms(uint xms){
     for(j=587;j>0;j--);
 }
 
+uint my_strncmp(char* str1,char* str2){
+  if (sizeof(str1) != sizeof(str2) ) {return 1;}
+  for(uint i = 0; i<sizeof(str1); i++){
+    if (str1[i] != str2[i]) {return 1;}
+  }
+  return 0;
+}
+
 #endif //UTILS_H

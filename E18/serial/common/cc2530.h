@@ -5,24 +5,25 @@
 
 // Interrupt Vectors
 
-#define RFERR_VECTOR    0   // RF TX FIFO underflow and RX FIFO overflow.
-#define ADC_VECTOR      1   // ADC end of conversion
-#define URX0_VECTOR     2   // USART0 RX complete
-#define URX1_VECTOR     3   // USART1 RX complete
-#define ENC_VECTOR      4   // AES encryption/decryption complete
-#define ST_VECTOR       5   // Sleep Timer compare
-#define P2INT_VECTOR    6   // Port 2 inputs
-#define UTX0_VECTOR     7   // USART0 TX complete
-#define DMA_VECTOR      8   // DMA transfer complete
-#define T1_VECTOR       9   // Timer 1 (16-bit) capture/compare/overflow
-#define T2_VECTOR       10  // Timer 2 (MAC Timer)
-#define T3_VECTOR       11  // Timer 3 (8-bit) capture/compare/overflow
-#define T4_VECTOR       12  // Timer 4 (8-bit) capture/compare/overflow
-#define P0INT_VECTOR    13  // Port 0 inputs
-#define UTX1_VECTOR     14  // USART1 TX complete
-#define P1INT_VECTOR    15  // Port 1 inputs
-#define RF_VECTOR       16  // RF general interrupts
-#define WDT_VECTOR      17  // Watchdog overflow in timer mode
+#define  RFERR_VECTOR   VECT(  0, 0x03 )   /*  RF TX FIFO Underflow and RX FIFO Overflow   */
+#define  ADC_VECTOR     VECT(  1, 0x0B )   /*  ADC End of Conversion                       */
+#define  URX0_VECTOR    VECT(  2, 0x13 )   /*  USART0 RX Complete                          */
+#define  URX1_VECTOR    VECT(  3, 0x1B )   /*  USART1 RX Complete                          */
+#define  ENC_VECTOR     VECT(  4, 0x23 )   /*  AES Encryption/Decryption Complete          */
+#define  ST_VECTOR      VECT(  5, 0x2B )   /*  Sleep Timer Compare                         */
+#define  P2INT_VECTOR   VECT(  6, 0x33 )   /*  Port 2 Inputs                               */
+#define  UTX0_VECTOR    VECT(  7, 0x3B )   /*  USART0 TX Complete                          */
+#define  DMA_VECTOR     VECT(  8, 0x43 )   /*  DMA Transfer Complete                       */
+#define  T1_VECTOR      VECT(  9, 0x4B )   /*  Timer 1 (16-bit) Capture/Compare/Overflow   */
+#define  T2_VECTOR      VECT( 10, 0x53 )   /*  Timer 2 (MAC Timer)                         */
+#define  T3_VECTOR      VECT( 11, 0x5B )   /*  Timer 3 (8-bit) Capture/Compare/Overflow    */
+#define  T4_VECTOR      VECT( 12, 0x63 )   /*  Timer 4 (8-bit) Capture/Compare/Overflow    */
+#define  P0INT_VECTOR   VECT( 13, 0x6B )   /*  Port 0 Inputs                               */
+#define  UTX1_VECTOR    VECT( 14, 0x73 )   /*  USART1 TX Complete                          */
+#define  P1INT_VECTOR   VECT( 15, 0x7B )   /*  Port 1 Inputs                               */
+#define  RF_VECTOR      VECT( 16, 0x83 )   /*  RF General Interrupts                       */
+#define  WDT_VECTOR     VECT( 17, 0x8B )   /*  Watchdog Overflow in Timer Mode             */
+
 
 // SFR Registers and BITs
 
@@ -51,22 +52,14 @@ SFRBIT(U0CSR,0x86,U0CSR_MODE,U0CSR_RE,U0CSR_SLAVE,U0CSR_FE,U0CSR_ERR,U0CSR_RX_BY
 //   SBIT(U0CSR_ACTIVE,   0x86, 0); // USART transmit/receive active status 0:idle 1:busy
 SFR(PCON,     0x87); // Power Mode Control
    SBIT(PCON_IDLE, 0x87, 0); //
-SFR(TCON,     0x88); // Interrupt Flags
-   SBIT(IT0,      0x88, 0); // reserved (must always be set to 1)
-   SBIT(RFERRIF,  0x88, 1); // RF TX/RX FIFO interrupt flag
-   SBIT(IT1,      0x88, 2); // reserved (must always be set to 1)
-   SBIT(URX0IF,   0x88, 3); // USART0 RX Interrupt Flag
-   SBIT(ADCIF,    0x88, 5); // ADC Interrupt Flag
-   SBIT(URX1IF,   0x88, 7); // USART1 RX Interrupt Flag
+SFRBIT(TCON,0x88,URX1IF,TCON_bit6,ADCIF,TCON_bit4,URX0IF,IT1,RFERRIF,IT0); // Interrupt Flags
 SFR(P0IFG,    0x89); // Port 0 Interrupt Status Flag
 SFR(P1IFG,    0x8A); // Port 1 Interrupt Status Flag
 SFR(P2IFG,    0x8B); // Port 2 Interrupt Status Flag
 SFR(PICTL,    0x8C); // Port Interrupt Control
 SFR(P1IEN,    0x8D); // Port 1 Interrupt Mask
 SFR(P0INP,    0x8F); // Port 0 Input Mode
-
 SFRBIT(P1,0x90,P1_7,P1_6,P1_5,P1_4,P1_3,P1_2,P1_1,P1_0); // Port 1
-
 SFR(RFIRQF1,  0x91); // RF Interrupt Flags MSB
 SFR(DPS,      0x92); // Data Pointer Select
 SFR(MPAGE,    0x93); // Memory Page Select
@@ -87,15 +80,7 @@ SFR(SLEEPSTA, 0x9D); // Sleep Mode Control Status
 SFR(CLKCONSTA,0x9E); // Clock Control Status
 SFR(PSBANK,   0x9F); // Identifier Name used by the trampoline __sdcc_banked_call
 SFR(FMAP,     0x9F); // Flash Memory Bank Mapping
-SFR(P2,       0xA0); // Port 2
-   SBIT(P2_0,     0xA0, 0); // Port 2 bit 0
-   SBIT(P2_1,     0xA0, 1); // Port 2 bit 1
-   SBIT(P2_2,     0xA0, 2); // Port 2 bit 2
-   SBIT(P2_3,     0xA0, 3); // Port 2 bit 3
-   SBIT(P2_4,     0xA0, 4); // Port 2 bit 4
-   SBIT(P2_5,     0xA0, 5); // Port 2 bit 5
-   SBIT(P2_6,     0xA0, 6); // Port 2 bit 6
-   SBIT(P2_7,     0xA0, 7); // Port 2 bit 7
+SFRBIT(P2,0xA0,P2_7,P2_6,P2_5,P2_4,P2_3,P2_2,P2_1,P2_0); // Port 2
 SFR(T2IRQF,   0xA1); // Timer 2 Interrupt Flags
 SFR(T2M0,     0xA2); // Timer 2 Multiplexed Register 0
 SFR(T2M1,     0xA3); // Timer 2 Multiplexed Rgeister 1
