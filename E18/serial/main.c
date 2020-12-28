@@ -4,8 +4,8 @@
 #include "common/usart.h"
 #include "common/clock.h"
 
-char GET_CHIPID[] = {'F','E',0x01,0x01};
-char GET_VERSION[] = {'F','E',0x0f,0x01};
+char GET_CHIPID[] = {'F','E',0x01,0x01,0};
+char GET_VERSION[] = {'F','E',0x0f,0x01,0};
 
 char A = 'A';
 char temp;
@@ -35,8 +35,8 @@ void main(void)  {
     delayms(1000); 
       
     if (RXTXflag == 3 && U0CSR_ACTIVE == 0 ){
-      if ( my_strncmp(Rxdata,GET_CHIPID) == 0 ) { sendCharUart0(CHIPID); }
-      else if( my_strncmp(Rxdata,GET_VERSION) == 0 ) { sendCharUart0(CHVER); }
+      if ( my_strncmp(GET_CHIPID,Rxdata,datanumber) == 0 ) { sendCharUart0(CHIPID); }
+      else if( my_strncmp(GET_VERSION,Rxdata,datanumber) == 0 ) { sendCharUart0(CHVER); }
       else {
         sendStringUart0(Rxdata, datanumber); //Send the recorded string.
       }
