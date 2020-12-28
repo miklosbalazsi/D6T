@@ -1,3 +1,5 @@
+https://www.programmersought.com/tag/zigbee+cc2530+complete+development+information/  
+
 https://www.sjoerdlangkemper.nl/2018/02/14/cc2530/  
 
 ### SDCC compiler manual
