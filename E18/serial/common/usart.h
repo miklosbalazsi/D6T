@@ -4,8 +4,12 @@
 #include "ioCC2530.h"
 #include "utils.h"
 
+#define ERROR  char 
+#define NEWLINE '\n'
+
+
 /*
- * Initialize UART0 9600,8N1
+ * Initialize UART0 115200,8N1
  * Use Alt2 location P1.2, P1.3, P1.4, P1.5
  */
 void initUart0(){
@@ -80,7 +84,6 @@ void sendStringUart0(char *Data,int len){
   int j;
   for(j=0;j<len;j++){
     U0DBUF = Data[j];
-//    while (U0CSR_TX_BYTE == 0); //Wait for transmission ends 
     while (UTX0IF == 0); //Send completed flag
     U0CSR_TX_BYTE = 0;
     UTX0IF = 0;
