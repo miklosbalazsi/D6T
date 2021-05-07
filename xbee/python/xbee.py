@@ -8,8 +8,8 @@ protocol = device.get_protocol()
 print(protocol)
 
 
-print("get_64bit_addr "+device.get_64bit_addr())
-print("get_16bit_addr "+device.get_16bit_addr())
+print("get_64bit_addr {}".format(device.get_64bit_addr()))
+print("get_16bit_addr {}".format(device.get_16bit_addr()) )
 
 
 
